@@ -1,0 +1,5 @@
+{
+  "name": "TLM Clinical Studio",
+  "description": "A production-grade therapy authoring system for creating and managing clinical tools, worksheets, and interactive shells.",
+  "requestFramePermissions": []
+}

@@ -15,6 +15,7 @@ import InitializeWizard from './features/studio/components/InitializeWizard';
 import BlueprintRegistry from './features/studio/components/BlueprintRegistry';
 import CanvasShell from './features/studio/components/CanvasShell';
 import WorksheetGenerator from './features/studio/components/WorksheetGenerator';
+import TemplatesDashboard from './features/studio/components/TemplatesDashboard';
 
 // Immersive Features
 import { 
@@ -120,6 +121,7 @@ export default function App() {
             <Route path="blueprint-registry" element={<BlueprintRegistry />} />
             <Route path="canvas" element={<CanvasShell />} />
             <Route path="worksheet-generator" element={<WorksheetGenerator />} />
+            <Route path="templates" element={<TemplatesDashboard />} />
             <Route path="*" element={<Placeholder title="Clinical Studio Engine" />} />
           </Route>
         </Route>

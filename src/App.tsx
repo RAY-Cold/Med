@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { supabase } from './lib/supabaseClient';
 
 // Layouts
 import PublicLayout from './components/layouts/PublicLayout';
@@ -63,29 +62,6 @@ const Placeholder = ({ title }: { title: string }) => (
 );
 
 export default function App() {
-  const [session, setSession] = useState<any>(null);
-
-  useEffect(() => {
-    // 1. Get initial active authorization session if any exists
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session) {
-        console.log('Active Supabase workspace session established for:', session.user?.email);
-      }
-    });
-
-    // 2. Subscribe to realtime auth lifecycle events (e.g. SIGNED_IN, SIGNED_OUT)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, currentSession) => {
-      setSession(currentSession);
-      console.log(`Auth state change detected: ${_event} (User: ${currentSession?.user?.email || 'Guest'})`);
-    });
-
-    // 3. Clean up the state subscription on component unmount
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>
